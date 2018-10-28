@@ -1,0 +1,9 @@
+@title: Übersicht
+@layout: documentation.html
+@content: 
+# Hook Übersicht
+
+In Herbie sind die folgenden System-Hooks im Einsatz.
+
+[include path="@site/snippets/hooks.twig"]
+

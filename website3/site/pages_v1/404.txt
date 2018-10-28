@@ -1,0 +1,8 @@
+title: Fehler - Seite nicht gefunden
+----
+content:
+
+#Seite nicht gefunden
+
+Uups, da ist was schief gelaufen. Die aufgerufene Seite oder Resource wurde nicht gefunden.
+

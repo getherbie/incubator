@@ -1,0 +1,15 @@
+@title: "SmartyPants"-Plugin
+@menu: Plugin Smarty-Pants
+@smartypants:
+- 1
+- 1
+- qDew
+@excerpt: Einfache Testseite für das SmartyPants-Plugin.
+@content: 
+# [page.title]
+
+Straight quotes (" and ') into “curly” quote HTML entities
+Backtick-style quotes (like this'') into “curly” quote HTML entities
+Dashes (-- and ---) into en- and em-dash entities
+Three consecutive dots (...) into an ellipsis entity
+

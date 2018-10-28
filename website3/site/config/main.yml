@@ -1,0 +1,33 @@
+pages:
+    meta_fields: [title, path, route, parent, hidden, date, excerpt]
+cache:
+    page:
+        enable: false
+    data:
+        enable: false
+
+display_load_time: true
+theme: default
+nice_urls: true
+twig:
+    debug: true
+plugins:
+    #path: /web/www/getherbie/plugins/
+    enable:
+        - plates
+        - shortcode
+        - test
+    config:
+        simplesearch:
+            use_page_cache: true
+        disqus:
+            twig: true
+        highlightjs:
+            style: zenburn
+xxxsysplugins:
+    enable:
+        - phpview
+        - plates
+        - shortcode
+        - markdown
+        - textile

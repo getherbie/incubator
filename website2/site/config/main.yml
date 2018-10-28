@@ -1,0 +1,46 @@
+cache:
+    page:
+        enable: false
+    data:
+        enable: false
+
+display_load_time: true
+theme: default
+nice_urls: true
+twig:
+    debug: true
+plugins:
+    path: /web/www/getherbie/plugins/
+    enable:
+        - adminpanel
+        - random
+        - simplecontact
+        - xmlsitemap
+        - feed
+        - simplesearch
+        - lipsum
+        - test
+        - googlemaps
+        - disqus
+        - highlightjs
+        - imagine
+        - gist
+        - grid
+        - video
+        - redirect
+        - smartypants
+        - menu
+        - mathjax
+    config:
+        simplesearch:
+            use_page_cache: true
+        disqus:
+            twig: true
+        highlightjs:
+            style: zenburn
+xxxsysplugins:
+    enable:
+        - plates
+        - shortcode
+        - markdown
+        - textile

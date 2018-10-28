@@ -1,0 +1,36 @@
+{
+    "name": "getherbie/website",
+    "homepage": "http://www.getherbie.org",
+    "description": "The content for the Herbie website. Herbie is a flat-file CMS & blog system.",
+    "type": "project",
+    "minimum-stability": "dev",
+    "license":"BSD-3-Clause",
+    "require": {
+        "php": ">=5.4.0",
+        "symfony/yaml": "2.7.*",
+        "tebe/node": "dev-master"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "Herbie\\Composer\\Installer::setPermission"
+        ]
+    },
+    "extra": {
+        "writable": [
+            "site/cache/data",
+            "site/cache/page",
+            "site/cache/twig"
+        ],
+        "executable": []
+    },
+    "autoload": {
+        "psr-4": {
+            "Herbie\\": "/web/www/getherbie/herbie/system/",
+            "Herbie2\\": "/web/www/getherbie/herbie2/system/",
+            "Herbie\\Composer\\": "/web/www/getherbie/composer/"
+        }
+    }
+}

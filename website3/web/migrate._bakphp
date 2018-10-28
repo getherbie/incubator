@@ -1,0 +1,116 @@
+<?php
+
+ini_set('display_errors', 1);
+
+// load dependencies
+require_once(__DIR__ . '/../vendor/autoload.php');
+
+$app = Herbie\App::instance();
+
+$app->timer();
+
+$app->init('../site');
+
+$pages = $app->getFiles('/web/www/getherbie/website/site/pages');
+
+foreach ($pages as $path) {
+
+    $content = file_get_contents($path);
+    $data = parse_page($content);
+
+    $str = "";
+    foreach ($data['yaml'] as $key => $value) {
+        if (is_array($value)) {
+            $str .= "@{$key}:\n";
+            foreach ($value as $k => $v) {
+                if (is_array($v)) {
+                    $str .= print_r($v, true) . "\n";
+                } else {
+                    $str .= "- {$v}\n";
+                }
+            }
+        } else {
+            $str .= "@{$key}: {$value}\n";
+        }
+    }
+
+    foreach ($data['segments'] as $key=>$value) {
+        if ($key == 0) {
+            $key = "@content";
+        } else {
+            $key = "@content_" . $key;
+        }
+        $str .= "{$key}: {$value}\n";
+    }
+
+    $pathinfo = pathinfo($path);
+
+    $filename = str_replace(
+        "/web/www/getherbie/website/site/pages",
+        "/web/www/getherbie/website3/site/pages",
+        $pathinfo["dirname"]
+    );
+
+    $filename .= "/" . $pathinfo["filename"];
+    $filename .= ".txt";
+    $directory = dirname($filename);
+    if (!is_dir($directory)) {
+        mkdir($directory, 0777, true);
+    }
+
+    echo $path . "<br>";
+    echo (int)file_put_contents($filename, $str);
+    echo "<br>";
+}
+
+
+function parse_page($content)
+{
+    if(!defined('UTF8_BOM')) {
+        define('UTF8_BOM', chr(0xEF).chr(0xBB).chr(0xBF));
+    }
+
+    $yaml = '';
+    $segments = [];
+
+    $matched = preg_match('/^['.UTF8_BOM.']*-{3}\r?\n(.*)\r?\n-{3}\R(.*)/ms', $content, $matches);
+
+    if ($matched === 1 && count($matches) == 3) {
+        $yaml = $matches[1];
+
+        $splitted = preg_split('/^-{3} (.+) -{3}\R?$/m', $matches[2], -1, PREG_SPLIT_DELIM_CAPTURE);
+
+        $count = count($splitted);
+        if ($count %2 == 0) {
+            throw new \Exception('Fehler beim Auslesen der Seite.');
+        }
+
+        $segments[] = array_shift($splitted);
+        $ct_splitted = count($splitted);
+        for ($i=0; $i<$ct_splitted; $i=$i+2) {
+            $key = $splitted[$i];
+            $value = $splitted[$i+1];
+            if (array_key_exists($key, $segments)) {
+                $segments[$key] .= $value;
+            } else {
+                $segments[$key] = $value;
+            }
+        }
+
+        $i = 0;
+        $last = count($segments) - 1;
+        foreach ($segments as $key => $segment) {
+            $segments[$key] = ($i == $last) ? $segment : preg_replace('/\R?$/', '', $segment, 1);
+            $i++;
+        }
+    }
+
+    $yaml = (array) Symfony\Component\Yaml\Yaml::parse($yaml);
+
+    return [
+        'yaml' => $yaml,
+        'segments' => $segments
+    ];
+}
+
+exit;

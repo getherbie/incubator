@@ -1,0 +1,7 @@
+@title: Redirect-Plugin
+@menu: Plugin Redirect
+@redirect:
+- http://www.getherbie.org
+- 301
+@excerpt: Einfacher Test für das Redirect-Plugin. Leitet diese Seite zur Website von Herbie weiter.
+@content: 

@@ -1,0 +1,64 @@
+title: Kontakt
+----
+
+nocache: 1
+----
+
+simplecontact:
+- Kontaktanfrage deiner Herbie-Website!
+- thomasbreuss@gmx.ch
+Array
+(
+    [name] => Array
+        (
+            [label] => Dein Name
+            [placeholder] => 
+        )
+
+    [email] => Array
+        (
+            [label] => Deine E-Mail
+            [placeholder] => 
+        )
+
+    [message] => Array
+        (
+            [label] => Deine Nachricht
+            [placeholder] => 
+        )
+
+    [antispam] => Array
+        (
+            [label] => Antispam
+            [placeholder] => 
+        )
+
+    [submit] => Array
+        (
+            [label] => Formular absenden
+        )
+
+)
+
+Array
+(
+    [success] => Vielen Dank! Deine Nachricht wurde versendet.
+    [error] => Uups! Da gibt's ein Problem. Bitte vervollständige das Formular und probier's nochmal.
+    [fail] => Uups! Etwas ist schief gegangen. Die Nachricht konnte nicht übermittelt werden.
+)
+
+Array
+(
+    [empty_field] => Dies ist ein Pflichtfeld
+    [invalid_email] => Die eingegebene E-Mail ist ungültig
+)
+
+----
+
+content: 
+# Kontakt
+
+[simplecontact]
+
+----
+

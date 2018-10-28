@@ -1,0 +1,14 @@
+@title: Random-Plugin
+@menu: Plugin Random
+@meta:
+- noindex,nofollow
+@nocache: 1
+@random:
+Array
+(
+    [0] => blog
+    [1] => kontakt
+)
+
+@excerpt: Einfache Testseite für das Random-Plugin. Zeigt zufallsgesteuert eine Seite der Website an.
+@content: 

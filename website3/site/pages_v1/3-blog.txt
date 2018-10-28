@@ -1,0 +1,13 @@
+title: Blog
+----
+
+layout: blog.html
+----
+
+nocache: 1
+----
+
+content: 
+{# See layouts/blog.html #}
+----
+

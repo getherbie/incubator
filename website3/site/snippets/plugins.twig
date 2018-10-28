@@ -1,0 +1,27 @@
+{% for item in site.data.plugins %}
+<div class="plugin">
+    <p><strong>{{ attribute(item, 'name') }}</strong></p>
+    <p>{{ attribute(item, 'text') }}</p>
+    <table>
+        <tr>
+            <td>Autor</td>
+            <td>{{ attribute(item, 'author') }}</td>
+        </tr>
+        <tr>
+            <td>Version</td>
+            <td>{{ attribute(item, 'version') }}</td>
+        </tr>
+        {% if item.composer %}
+        <tr>
+            <td style="white-space:nowrap">Composer</td>
+            <td>"{{ item.composer }}": "{{ item.version }}"</td>
+        </tr>
+        {% endif %}
+    </table>
+    <p class="links">
+        <a class="pure-button button-small" href="{{ url(linkto) }}/{{ item.id }}"><i class="fa fa-chevron-right"></i> Mehr</a>
+        {% if item.github %}<a class="pure-button button-small" target="_blank" href="{{ item.github }}"><i class="fa fa-github"></i> GitHub</a>{% endif %}
+        {% if item.packagist %}<a class="pure-button button-small" target="_blank" href="{{ item.packagist }}"><i class="fa fa-archive"></i> Packagist</a>{% endif %}
+    </p>
+</div>
+{% endfor %}
